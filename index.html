@@ -5,57 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta
       name="description"
-      content="WonderOS — immersive 3D browser operating system"
+      content="WonderOS — an immersive 3D browser operating system"
     />
     <title>WonderOS</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div id="appShell">
-      <canvas id="threeCanvas" aria-label="WonderOS 3D scene"></canvas>
-      <div id="lightingOverlay"></div>
+      <canvas id="threeCanvas" aria-label="WonderOS 3D background"></canvas>
+      <div id="ambientGlow"></div>
 
-      <header id="topbar" class="glass-panel topbar">
-        <div class="status-group left">
-          <span class="pill status-pill">Status</span>
-          <span id="signalIndicator" class="status-dot"></span>
+      <header id="topbar" class="glass-panel">
+        <div class="status-groups left">
+          <span class="pill">Status</span>
+          <span class="signal"></span>
         </div>
 
-        <div id="clockWrap" class="clock-wrap">
+        <div class="clock-wrap">
           <span id="clockText">00:00</span>
           <span id="dateText">Mon 01</span>
         </div>
 
-        <div class="status-group right">
-          <button id="homeBtn" class="chip-button" type="button">Home</button>
-          <button id="launcherBtn" class="chip-button" type="button">Launcher</button>
-          <button id="notificationsBtn" class="chip-button" type="button">Alerts</button>
+        <div class="status-groups right">
+          <button class="chip" type="button" id="homeBtn">Home</button>
+          <button class="chip" type="button" id="launcherBtn">Launcher</button>
+          <button class="chip" type="button" id="notificationsBtn">Alerts</button>
         </div>
       </header>
 
       <main id="desktop">
         <section id="homeScreen" class="screen active">
-          <div class="hero-panel glass-panel">
-            <div class="hero-kicker">WonderOS</div>
+          <div class="hero glass-panel">
+            <div class="eyebrow">WonderOS</div>
             <h1>Fluid control. Focused flow.</h1>
-            <p>Interactive systems engineered for clarity, calm, and creative motion.</p>
+            <p>Interactive systems tuned for calm, clarity, and creative motion.</p>
           </div>
-
           <div id="widgetStack" class="widget-stack"></div>
         </section>
 
-        <div id="dock" class="dock glass-panel" aria-label="Application dock"></div>
-        <aside id="launcherPanel" class="glass-panel hidden" aria-label="Application launcher"></aside>
+        <aside id="launcherPanel" class="glass-panel hidden" aria-label="Open apps">
+          <div class="launcher-header">
+            <input id="launcherSearch" type="search" placeholder="Search apps" aria-label="Search apps" />
+            <button class="secondary-btn" type="button" id="closeLauncher">Close</button>
+          </div>
+          <div id="launcherGrid" class="launcher-grid"></div>
+        </aside>
       </main>
 
-      <div id="windowLayer" aria-live="polite"></div>
+      <nav id="dock" class="glass-panel" aria-label="Dock"></nav>
+      <aside id="notificationCenter" class="glass-panel hidden"></aside>
 
-      <aside id="notificationCenter" class="glass-panel hidden" aria-label="In-app notifications"></aside>
-
-      <div id="toastLayer" aria-live="polite" aria-atomic="true"></div>
-
-      <div id="fallbackNotice" class="fallback hidden" role="alert">
-        WebGL is unavailable in this browser. The interface remains available, but the immersive 3D scene is disabled.
+      <div id="windowLayer"></div>
+      <div id="toastLayer" aria-live="polite"></div>
+      <div id="fallback" class="fallback hidden" role="alert">
+        WebGL is unavailable in this browser. The system remains usable with the lightweight fallback mode.
       </div>
     </div>
 
